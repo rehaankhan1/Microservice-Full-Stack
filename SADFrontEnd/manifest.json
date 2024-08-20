@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "SADFrontEnd",
+  "version": "1.0",
+  "description": "Job application tracking web app to keep track of number of applications and details of that by an individual while applying for a job at a company. ",
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}

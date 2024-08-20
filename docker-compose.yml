@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  doc-api:
+    build:
+      context: ./DOC-API
+      dockerfile: Dockerfile
+    ports:
+      - "5300:5300"  # Adjust port mapping as needed
+    image: doc-api
+
+  user-api:
+    build:
+      context: ./USER-API-BETA/1
+      dockerfile: Dockerfile
+    ports:
+      - "5200:5200"  # Adjust port mapping as needed
+    image: user-api
+
+  job-api:
+    build:
+      context: ./JOB-API-BETA
+      dockerfile: Dockerfile
+    ports:
+      - "5100:5100"  # Adjust port mapping as needed
+    image: job-api
+   
+  SADFrontend:
+    build:
+      context: ./SADFrontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"  # Adjust port mapping as needed
+    image: sad-frontend
+    depends_on:
+      - doc-api
+      - user-api
+      - job-api
